@@ -31,7 +31,25 @@ AUTH_PASSWORD_VALIDATORS=[{"NAME":"django.contrib.auth.password_validation.UserA
 {"NAME":"django.contrib.auth.password_validation.NumericPasswordValidator"}]
 LANGUAGE_CODE="en-us"; TIME_ZONE="Asia/Kolkata"; USE_I18N=True; USE_TZ=True
 STATIC_URL="static/"; DEFAULT_AUTO_FIELD="django.db.models.BigAutoField"
-CORS_ALLOWED_ORIGINS=["http://localhost:5173","http://127.0.0.1:5173"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
 REST_FRAMEWORK={"DEFAULT_AUTHENTICATION_CLASSES":("rest_framework_simplejwt.authentication.JWTAuthentication",),
 "DEFAULT_PERMISSION_CLASSES":("rest_framework.permissions.AllowAny",)}
 SIMPLE_JWT={"ACCESS_TOKEN_LIFETIME":timedelta(minutes=60),"REFRESH_TOKEN_LIFETIME":timedelta(days=1)}
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_USE_TLS = True
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+# settings.py
+AUTH_USER_MODEL = 'authentication.UserProfile'

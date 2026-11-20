@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Tickets from "./pages/Tickets";
 import TicketDetails from "./pages/TicketDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CustomerTicket from "./pages/CustomerTicket";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/tickets" element={<Tickets />} />
                     <Route path="/tickets/:id" element={<TicketDetails />} />
                 </Route>
+                <Route path="/submit-ticket" element={<CustomerTicket />} />
             </Routes>
         </BrowserRouter>
     );

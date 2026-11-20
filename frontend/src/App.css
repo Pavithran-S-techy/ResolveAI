@@ -1458,3 +1458,264 @@
         padding: 32px 24px;
     }
 }
+
+
+/* ============================= */
+/* CUSTOMER TICKET SUBMISSION */
+/* ============================= */
+
+.customer-ticket-page {
+    min-height: 100vh;
+    background: #f4f6fb;
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-ticket-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e8ebf2;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customer-back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #667085;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.customer-back-link:hover {
+    color: #4f46e5;
+}
+
+.customer-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.customer-brand-icon {
+    width: 43px;
+    height: 43px;
+    background: #eef2ff;
+    color: #4f46e5;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customer-brand h1 {
+    font-size: 20px;
+    color: #172033;
+    margin: 0;
+}
+
+.customer-brand p {
+    font-size: 12px;
+    color: #8992a5;
+    margin: 3px 0 0;
+}
+
+.customer-ticket-container {
+    width: 100%;
+    max-width: 650px;
+    margin: 55px auto;
+    padding: 0 20px;
+    flex: 1;
+}
+
+.customer-ticket-card,
+.ticket-success-card {
+    background: #ffffff;
+    border: 1px solid #e8ebf2;
+    border-radius: 13px;
+    padding: 35px;
+    box-shadow: 0 8px 30px rgba(30, 41, 59, 0.05);
+}
+
+.customer-ticket-heading {
+    margin-bottom: 28px;
+}
+
+.customer-ticket-heading h2 {
+    font-size: 25px;
+    color: #172033;
+    margin: 0 0 9px;
+}
+
+.customer-ticket-heading p {
+    font-size: 14px;
+    color: #8992a5;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.customer-form-group {
+    margin-bottom: 21px;
+}
+
+.customer-form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #344054;
+    margin-bottom: 8px;
+}
+
+.customer-form-group input,
+.customer-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid #dfe3eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #172033;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.customer-form-group input {
+    height: 45px;
+}
+
+.customer-form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+    line-height: 1.6;
+}
+
+.customer-form-group input:focus,
+.customer-form-group textarea:focus {
+    border-color: #4f46e5;
+}
+
+.customer-form-group input::placeholder,
+.customer-form-group textarea::placeholder {
+    color: #aab1bf;
+}
+
+.customer-submit-button {
+    width: 100%;
+    height: 47px;
+    border: none;
+    border-radius: 8px;
+    background: #4f46e5;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.customer-submit-button:hover {
+    background: #4338ca;
+}
+
+.customer-submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.customer-form-error {
+    white-space: pre-line;
+    background: #fff1f0;
+    color: #d92d20;
+    border: 1px solid #fecdca;
+    padding: 12px;
+    border-radius: 7px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.customer-privacy-note {
+    text-align: center;
+    color: #98a2b3;
+    font-size: 12px;
+    margin: 22px 0 0;
+    line-height: 1.5;
+}
+
+.ticket-success-card {
+    text-align: center;
+    padding: 45px 35px;
+}
+
+.success-icon {
+    color: #16a34a;
+    margin-bottom: 18px;
+}
+
+.ticket-success-card h2 {
+    font-size: 23px;
+    color: #172033;
+    margin: 0 0 12px;
+}
+
+.ticket-success-card > p {
+    font-size: 14px;
+    color: #8992a5;
+    line-height: 1.6;
+}
+
+.ticket-reference {
+    background: #f4f6fb;
+    border-radius: 9px;
+    padding: 16px;
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.ticket-reference span {
+    font-size: 12px;
+    color: #8992a5;
+}
+
+.ticket-reference strong {
+    font-size: 21px;
+    color: #4f46e5;
+}
+
+.success-note {
+    margin-bottom: 25px;
+}
+
+.customer-ticket-footer {
+    text-align: center;
+    padding: 20px;
+    color: #98a2b3;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .customer-ticket-header {
+        padding: 15px 20px;
+    }
+
+    .customer-ticket-container {
+        margin: 30px auto;
+    }
+
+    .customer-ticket-card,
+    .ticket-success-card {
+        padding: 25px 20px;
+    }
+
+    .customer-ticket-heading h2 {
+        font-size: 22px;
+    }
+}

@@ -1,6 +1,42 @@
-from django.urls import path,include
-from rest_framework.routers import DefaultRouter
-from .views import TicketViewSet,dashboard
-router=DefaultRouter()
-router.register("tickets",TicketViewSet,basename="ticket")
-urlpatterns=[path("",include(router.urls)),path("dashboard/",dashboard)]
+
+from django.urls import path
+
+from .views import (
+    TicketListCreateView,
+    TicketDetailView,
+    GenerateReplyView,
+    DashboardView,
+)
+
+
+urlpatterns = [
+
+    # List all tickets and create a ticket
+    path(
+        "tickets/",
+        TicketListCreateView.as_view(),
+        name="ticket-list-create"
+    ),
+
+    # Retrieve, update and delete a ticket
+    path(
+        "tickets/<uuid:pk>/",
+        TicketDetailView.as_view(),
+        name="ticket-detail"
+    ),
+
+    # Generate a suggested reply
+    path(
+        "tickets/<uuid:pk>/generate-reply/",
+        GenerateReplyView.as_view(),
+        name="generate-reply"
+    ),
+
+    # Dashboard statistics
+    path(
+        "dashboard/",
+        DashboardView.as_view(),
+        name="dashboard"
+    ),
+
+]
