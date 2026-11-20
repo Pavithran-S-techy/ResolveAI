@@ -16,6 +16,7 @@ from .services.gemini_service import (
 
 from authentication.permissions import IsAdminRole,IsSupportRole
 
+from . utils import send_mail
 
 # 1. List all tickets and create a new ticket
 class TicketListCreateView(generics.ListCreateAPIView):
@@ -161,3 +162,65 @@ class DashboardView(generics.GenericAPIView):
             "priority_statistics": priority_statistics,
 
         })
+
+
+class SendReplyView(generics.GenericAPIView):
+
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+    permission_classes = [IsAdminRole | IsSupportRole]
+
+    def post(self, request, *args, **kwargs):
+
+        ticket = self.get_object()
+
+        customer_name = ticket.customer_name
+        ticket_subject = ticket.subject
+        reply_content = ticket.suggested_response
+
+        if not reply_content or not reply_content.strip():
+
+            return Response(
+                {"error": "Please generate a reply before sending."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        recipient = ticket.customer_email
+        subject = f"Re: {ticket.subject}"
+
+        context = {
+            "customer_name": customer_name,
+            "ticket_subject": ticket_subject,
+            "reply_content": reply_content
+        }
+
+        template = "emails/reply_email.html"
+
+        try:
+
+            # Send email to customer
+            email_sent = send_mail(
+                recipient,
+                subject,
+                context,
+                template
+            )
+
+            if email_sent:
+
+                return Response(
+                    {"msg": "Response sent successfully."},
+                    status=status.HTTP_200_OK
+                )
+
+            return Response(
+                {"error": "Unable to send the email."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE
+            )
+
+        except Exception:
+
+            return Response(
+                {"error": "An error occurred while sending the email."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE
+            )

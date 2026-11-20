@@ -1,6 +1,7 @@
 from pathlib import Path
 from decouple import config, Csv
 from datetime import timedelta
+import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY", default="development-key-change-me")
 DEBUG = config("DEBUG", default=True, cast=bool)
@@ -18,7 +19,7 @@ MIDDLEWARE = [
  "django.contrib.messages.middleware.MessageMiddleware","django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 ROOT_URLCONF="config.urls"
-TEMPLATES=[{"BACKEND":"django.template.backends.django.DjangoTemplates","DIRS":[],"APP_DIRS":True,
+TEMPLATES=[{"BACKEND":"django.template.backends.django.DjangoTemplates",'DIRS': [os.path.join(BASE_DIR,'templates')],"APP_DIRS":True,
 "OPTIONS":{"context_processors":["django.template.context_processors.request","django.contrib.auth.context_processors.auth","django.contrib.messages.context_processors.messages"]}}]
 WSGI_APPLICATION="config.wsgi.application"
 DATABASES={"default":{"ENGINE":"django.db.backends.mysql","NAME":config("DB_NAME",default="resolveai_db"),

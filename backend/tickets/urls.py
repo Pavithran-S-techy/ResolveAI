@@ -6,6 +6,7 @@ from .views import (
     TicketDetailView,
     GenerateReplyView,
     DashboardView,
+    SendReplyView
 )
 
 
@@ -38,5 +39,11 @@ urlpatterns = [
         DashboardView.as_view(),
         name="dashboard"
     ),
+
+    path(
+    "tickets/<uuid:pk>/send-reply/",
+    SendReplyView.as_view(),
+    name="send-reply"
+),
 
 ]
